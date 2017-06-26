@@ -1,0 +1,38 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* NAVBAR
+-------------------------------------------------- */
+
+.navbar {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* FOOTER
+-------------------------------------------------- */
+
+.footer-wrapper {
+  padding-top: 15px;
+  border-top: 1px solid #e5e5e5;
+  height: 60px;
+  color: #9E9E9E;
+  text-align: center;
+  font-size: 14px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 30px;
+}

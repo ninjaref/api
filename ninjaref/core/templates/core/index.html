@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div>
+  <h1>Welcome to Ninja Reference!</h1>
+  <p>
+    Ninja Reference is an <a href="https://github.com/ninjaref">open-source effort</a>
+    to improve the availability and presentation of data on
+    <a href="http://www.nbc.com/american-ninja-warrior">American Ninja Warrior</a>.
+    We track competitors across seasons, courses, and obstacles&mdash;allowing
+    for the level of analysis often found in more traditional sports.
+  </p>
+  <form>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Get started by entering a competitor's name:</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Drew Drechsel">
+  </div>
+</form>
+</div>
+{% endblock %}
