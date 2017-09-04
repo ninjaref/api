@@ -1,23 +1,52 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-{% block title %}Home{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% block title %}Home{% endblock %} {% block content %}
 <div>
-  <h1>Welcome to Ninja Reference!</h1>
-  <p>
-    Ninja Reference is an <a href="https://github.com/ninjaref">open-source effort</a>
-    to improve the availability and presentation of data on
-    <a href="http://www.nbc.com/american-ninja-warrior">American Ninja Warrior</a>.
-    We track competitors across seasons, courses, and obstacles&mdash;allowing
-    for the level of analysis often found in more traditional sports.
-  </p>
-  <form>
-  <div class="form-group">
-    <label for="formGroupExampleInput">Get started by entering a competitor's name:</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Drew Drechsel">
-  </div>
-</form>
+    <h1>Welcome to Ninja Reference!</h1>
+    <p>
+        Ninja Reference is an <a href="https://github.com/ninjaref">open-source effort</a> to improve the availability and presentation of data on
+        <a href="http://www.nbc.com/american-ninja-warrior">American Ninja Warrior</a>. We track competitors across seasons, courses, and obstacles&mdash;allowing for the level of analysis often found in more traditional sports.
+    </p>
+    <form>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Get started by entering a competitor's name:</label>
+            <div id="the-basics">
+                <input type="text" class="form-control typeahead" placeholder="Drew Drechsel">
+            </div>
+        </div>
+    </form>
 </div>
+{% endblock %} {% block js %} {{ block.super }}
+<script type="text/javascript" src="{% static 'vendor/typeahead.bundle.js' %}"></script>
+<script type="text/javascript">
+var substringMatcher = function(strs) {
+    return function findMatches(q, cb) {
+        var matches, substringRegex;
+
+        // an array that will be populated with substring matches
+        matches = [];
+
+        // regex used to determine if a string contains the substring `q`
+        substrRegex = new RegExp(q, 'i');
+
+        // iterate through the pool of strings and for any string that
+        // contains the substring `q`, add it to the `matches` array
+        $.each(strs, function(i, str) {
+            if (substrRegex.test(str)) {
+                matches.push(str);
+            }
+        });
+
+        cb(matches);
+    };
+};
+
+var names = { { names | safe } };
+$('#the-basics .typeahead').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+}, {
+    name: 'athletes',
+    source: substringMatcher(names)
+});
+</script>
 {% endblock %}

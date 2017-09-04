@@ -1,10 +1,16 @@
 from django.shortcuts import render
 
-from .models import CareerSummary
+from .models import (
+    CareerSummary,
+    Ninja
+)
 
 
 def index(request):
-    return render(request, 'core/index.html', {})
+    ninjas = Ninja.objects.all()
+    names = ['{0} {1}'.format(n.first_name, n.last_name) for n in ninjas]
+    print(names)
+    return render(request, 'core/index.html', {'names': names})
 
 
 def leaderboard(request):
