@@ -4,6 +4,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<div class="container">
 <div>
     <h1>Welcome to Ninja Reference!</h1>
     <p>
@@ -18,6 +19,7 @@
             </div>
         </div>
     </form>
+</div>
 </div>
 {% endblock %} {% block js %} {{ block.super }}
 <script type="text/javascript" src="{% static 'vendor/typeahead.bundle.js' %}"></script>

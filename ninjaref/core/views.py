@@ -22,3 +22,14 @@ def leaderboard(request):
             'women': leaders.filter(ninja__sex='F')[:10],
             'page': 'leaderboard'
         })
+
+
+def profile(request, sender, target):
+    ninja = Ninja.objects.get(ninja_id=target)
+    summary = CareerSummary.objects.get(ninja_id=target)
+    return render(request, 'core/profile.html', {
+        'ninja': ninja,
+        'name': '{0} {1}'.format(ninja.first_name, ninja.last_name),
+        'summary': summary,
+        'page': 'profile',
+    })

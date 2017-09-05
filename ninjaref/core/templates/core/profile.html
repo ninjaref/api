@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} {{ name }} {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/profile.css' %}"> {% endblock %} {% block content %}
+<div class="athlete-info">
+    <div class="container">
+        <div class="profile-header">
+            <div class="bio">
+                <h2 class="border-bottom">{{ name }} <span>
+                <a href="your link here"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                <a href="your link here"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </span></h2>
+                <p>
+                    Age: {{ninja.age}}
+                    <br> Experience: 4 seasons
+                </p>
+            </div>
+        </div>
+        <ul id="tabs" class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Career Summary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Course Statistics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Obstacle Statistics</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+</div>
+{% endblock %}

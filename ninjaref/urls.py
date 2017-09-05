@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', core_views.index, name='home'),
     url(r'^leaderboard/$', core_views.leaderboard, name='leaderboard'),
+    url(r'^(index|leaderboard)/(.+)', core_views.profile, name='profile')
 ]

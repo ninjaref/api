@@ -1,0 +1,162 @@
+/* Profile Panels
+-------------------------------------------------- */
+
+.panel-heading {
+    font-weight: bold;
+}
+
+.panel-custom {
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    border-bottom-color: rgba(0, 0, 0, 0.125);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.panel-custom>.panel-heading {
+    color: #FAFAFA;
+    height: 15px;
+    padding: 4px 10px;
+}
+
+.panel-custom>.panel-body {
+    color: #555;
+}
+
+.panel-green>.panel-heading {
+    background: #65D977;
+    border-color: #65D977;
+}
+
+.panel-blue>.panel-heading {
+    background: #57CADF;
+    border-color: #57CADF;
+}
+
+.panel-orange>.panel-heading {
+    background: #DFB768;
+    border-color: #DFB768;
+}
+
+.panel-red>.panel-heading {
+    background: rgba(255, 104, 97, 1);
+    border-color: #FF6861;
+}
+
+.panel-purple>.panel-heading {
+    background: #814EFA;
+    border-color: #814EFA;
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #333;
+}
+
+.panel p {
+    margin-bottom: 5px;
+}
+
+.chart-wrapper {
+    /*background-color: #FAFAFA;*/
+}
+
+
+/* Profile Header
+-------------------------------------------------- */
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.updated {
+    margin-top: 15px;
+}
+
+.compare {
+    margin-top: 10px;
+    /*margin-right: 10px;*/
+}
+
+.athlete-info {
+    border-bottom: 1px solid #e5e5e5;
+    /*background-color: #FAFAFA;*/
+}
+
+.athlete-info p,
+.bio-item,
+.bio-item a {
+    color: #555;
+}
+
+.athlete-info h2 {}
+
+.bio-item a {
+    font-size: 13px;
+}
+
+.avatar {
+    padding-top: 18px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    float: left;
+    margin-top: 5px;
+    width: 200px;
+}
+
+.avatar img {
+    width: 200px;
+    height: 135px;
+    margin: auto;
+    display: block;
+}
+
+.nav-tabs {
+    margin-top: 10px;
+    border-bottom: none;
+}
+
+.nav-tabs>li>a {
+    color: #555;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: #333;
+    font-weight: bold;
+    border-top-width: 4px;
+    border-color: #4285EA #e5e5e5 transparent;
+}
+
+
+/*border-color: #f0ad4e #e5e5e5 transparent;*/
+
+.course-picker {
+    padding-top: 20px;
+}
+
+
+/* Mobile View
+-------------------------------------------------- */
+
+
+/* CSS Method for adding Font Awesome Chevron Icons */
+
+.accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: right;
+    color: inherit;
+}
+
+.panel-heading.collapsed .accordion-toggle:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";
+}
+
+.panel-group {
+    margin-top: 20px;
+}

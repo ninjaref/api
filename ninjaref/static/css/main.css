@@ -11,6 +11,16 @@ body {
   padding-bottom: 5rem;
 }
 
+.mobile {
+    display: none;
+}
+.leaderboard {
+    margin-top: 20px;
+}
+.nav-pills {
+    margin-bottom: 10px;
+}
+
 /* TYPEAHEAD
 -------------------------------------------------- */
 
