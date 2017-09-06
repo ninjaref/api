@@ -1,6 +1,29 @@
 /* Profile Header
 -------------------------------------------------- */
 
+.heading {
+    font-family: ProximaNovaRegular, helvetica, arial, sans-serif;
+    color: rgb(74, 74, 74);
+    font-size: 32px;
+    line-height: 1em;
+    margin-bottom: 4px;
+}
+
+.details {
+    font-family: ProximaNovaRegular, helvetica, arial, sans-serif;
+    color: rgb(155, 155, 155);
+    font-size: 14px;
+    line-height: 1em;
+    margin-bottom: 25px;
+}
+
+.info {
+    display: inline-block;
+    padding-right: 15px;
+    margin-right: 15px;
+    border-right: 1px solid rgb(221, 221, 221);
+}
+
 .meta {
     display: table;
     margin-bottom: 0;
@@ -90,6 +113,10 @@ ul.meta li {
 
 
 
+
+
+
+
 /*border-color: #f0ad4e #e5e5e5 transparent;*/
 
 .course-picker {
@@ -97,18 +124,7 @@ ul.meta li {
 }
 
 
-/* Badges
--------------------------------------------------- */
 
-.badge-total-victory {
-    color: #fff;
-    background-color: #FFD600;
-}
-
-.badge-stage-1 {
-    color: #fff;
-    background-color: #814CCC;
-}
 
 
 

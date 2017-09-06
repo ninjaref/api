@@ -1,51 +1,37 @@
-{% extends 'base.html' %} {% load static %} {% block title %} {{ name }} {% endblock %} {% block style %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/css/profile.css' %}"> {% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ name }} {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
 <div class="athlete-info">
     <div class="container">
         <div class="profile-header">
             <div class="bio row">
-                <div class="col-sm-6" style="position: relative; min-height: 50px;">
-                    <div style="font-family: ProximaNovaRegular, helvetica, arial, sans-serif; color: rgb(74, 74, 74); font-size: 32px; line-height: 1em; margin-bottom: 4px;">{{ name }}</div>
-                    <div style="font-family: ProximaNovaRegular, helvetica, arial, sans-serif; color: rgb(155, 155, 155); font-size: 14px; line-height: 1em; margin-bottom: 25px;">
-                        <div style="display: inline-block; padding-right: 15px; margin-right: 15px; border-right: 1px solid rgb(221, 221, 221);">
-                            <!-- react-text: 318 -->{{ ninja.sex }}, {{ ninja.age }}
-                            <!-- /react-text -->
+                <div class="col-sm-6">
+                    <div class="heading">{{ name }}</div>
+                    <div class="details">
+                        <div class="info">{{ ninja.sex }}, {{ ninja.age }}
                         </div>
-                        <div style="display: inline-block;"><em>"The Weather Man"</em></div>
-                    </div>
-                    <div style="position: absolute; top: 0px; left: 0px; width: 100%; padding-top: 1px; pointer-events: none; opacity: 0; transition: opacity 0.3s 0.2s;">
-                        <div style="height: 32px; width: 30%; min-width: 150px; margin-bottom: 4px; background-color: rgb(234, 234, 234); background-image: linear-gradient(105deg, rgb(234, 234, 234), rgb(234, 234, 234) 20%, rgb(242, 242, 242), rgb(234, 234, 234) 80%, rgb(234, 234, 234)); background-size: 200% 100%; animation: shimmer 2s 1s infinite;"></div>
-                        <div style="height: 14px; width: 40%; min-width: 200px; background-color: rgb(244, 244, 244); background-image: linear-gradient(105deg, rgb(244, 244, 244), rgb(244, 244, 244) 20%, rgb(250, 250, 250), rgb(244, 244, 244) 80%, rgb(244, 244, 244)); background-size: 200% 100%; animation: shimmer 2s 1s infinite;"></div>
+                        <div style="display: inline-block;">Rock Climber</div>
                     </div>
                 </div>
-                <!--
-                <h2 class="border-bottom">{{ name }} <span>
-                <a href="your link here"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-                <a href="your link here"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </span></h2>
-                <em>"The Weather Man"</em>
-                <div id="details">
-                    <ul class="meta">
-                        <li>
-                            <label>Seasons</label> {{ summary.seasons }} </li>
-                        <li>
-                            <label>Age</label> {{ ninja.age }} </li>
-                        <li>
-                            <label>Best Finish</label> Stage 3 </li>
-                        <li>
-                            <label>Avg. Finish</label> Stage 2 </li>
-                    </ul>
-                </div>
-              -->
                 <div class="col-sm-6 text-right"><span>
                 <a href="your link here"> <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
                 <a href="your link here"> <i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
                 </span></div>
                 <div class="col-sm-12">
                     <ul class="list-inline">
-                        <li class="list-inline-item"><span class="badge badge-total-victory">Total Victory</span></li>
-                        <li class="list-inline-item"><span class="badge badge-stage-1">Stage 1</span></li>
-                        <li class="list-inline-item"><span class="badge badge-secondary">City Finals</span></li>
+                        <li class="list-inline-item"><span class="badge badge-pill badge-secondary">Total Victory</span></li>
+                        <li class="list-inline-item"><span class="badge badge-pill badge-secondary">Stage 3</span></li>
+                        <li class="list-inline-item"><span class="badge badge-pill badge-secondary">Stage 2</span></li>
+                        <li class="list-inline-item"><span class="badge badge-pill badge-secondary">Stage 1</span></li>
+                        <li class="list-inline-item"><span class="badge badge-pill badge-secondary">City Finals</span></li>
+                        <li class="list-inline-item"><span class="badge badge-pill badge-secondary">Qualifying</span></li>
                     </ul>
                 </div>
             </div>
@@ -95,14 +81,6 @@
                 </tbody>
             </table>
         </div>
-        <!--
-        <div class="col-sm-6">
-            <label>Ninja Rating</label>
-            <div>
-                <canvas id="ninja-rating-chart"></canvas>
-            </div>
-        </div>
-      -->
         <div class="col-sm-12">
             <label>Career Trend</label>
             <div>
