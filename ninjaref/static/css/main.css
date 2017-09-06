@@ -7,8 +7,11 @@ html {
 }
 
 body {
-  padding-top: 5rem;
   padding-bottom: 5rem;
+}
+
+.navbar {
+  margin-bottom: 2rem;
 }
 
 .mobile {

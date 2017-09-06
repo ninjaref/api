@@ -27,9 +27,16 @@ def leaderboard(request):
 def profile(request, sender, target):
     ninja = Ninja.objects.get(ninja_id=target)
     summary = CareerSummary.objects.get(ninja_id=target)
+
+    profile = [
+        summary.speed, summary.consistency, summary.success,
+        summary.speed + summary.consistency + summary.success
+    ]
+    profile = [float(n) for n in profile]
     return render(request, 'core/profile.html', {
         'ninja': ninja,
         'name': '{0} {1}'.format(ninja.first_name, ninja.last_name),
         'summary': summary,
+        'profileNRData': profile,
         'page': 'profile',
     })
