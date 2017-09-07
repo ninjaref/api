@@ -5,9 +5,12 @@ from .models import (CareerSummary, Ninja)
 
 def index(request):
     ninjas = Ninja.objects.all()
-    names = ['{0} {1}'.format(n.first_name, n.last_name) for n in ninjas]
+    data = [{
+        'id': n.ninja_id,
+        'name': '{0} {1}'.format(n.first_name, n.last_name)
+    } for n in ninjas]
     return render(request, 'core/index.html',
-                  {'names': names,
+                  {'ninjas': data,
                    'page': 'index'})
 
 

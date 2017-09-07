@@ -24,36 +24,27 @@
 {% endblock %} {% block js %} {{ block.super }}
 <script type="text/javascript" src="{% static 'vendor/typeahead.bundle.js' %}"></script>
 <script type="text/javascript">
-var substringMatcher = function(strs) {
-    return function findMatches(q, cb) {
-        var matches, substringRegex;
+    var data = {{ ninjas|safe }};
 
-        // an array that will be populated with substring matches
-        matches = [];
+    var src = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: data
+    });
 
-        // regex used to determine if a string contains the substring `q`
-        substrRegex = new RegExp(q, 'i');
-
-        // iterate through the pool of strings and for any string that
-        // contains the substring `q`, add it to the `matches` array
-        $.each(strs, function(i, str) {
-            if (substrRegex.test(str)) {
-                matches.push(str);
-            }
-        });
-
-        cb(matches);
-    };
-};
-
-var names = {{ names|safe }};
-$('#the-basics .typeahead').typeahead({
-    hint: true,
-    highlight: true,
-    minLength: 1
-}, {
-    name: 'athletes',
-    source: substringMatcher(names)
-});
+    src.initialize();
+    $('#the-basics .typeahead').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    }, {
+        displayKey: 'name',
+        source: src.ttAdapter(),
+        templates: {
+        suggestion: function(data) {
+            return '<a href="index/' + data.id + '">' + data.name + '</a>'
+        }
+      }
+    });
 </script>
 {% endblock %}
