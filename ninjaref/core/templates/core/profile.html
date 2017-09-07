@@ -17,13 +17,20 @@
                     <div class="details">
                         <div class="info">{{ ninja.sex }}, {{ ninja.age }}
                         </div>
-                        <div style="display: inline-block;">Rock Climber</div>
+                        {% if ninja.occupation %}
+                            <div class="occupation">{{ ninja.occupation }}</div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-sm-6 text-right"><span>
-                <a href="your link here"> <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
-                <a href="your link here"> <i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                {% if ninja.twitter %}
+                    <a href="https://twitter.com/{{ ninja.twitter }}"> <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                {% endif %}
+                {% if ninja.instagram %}
+                    <a href="https://www.instagram.com/{{ ninja.instagram }}"> <i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                {% endif %}
                 </span></div>
+                <!--TODO: badges?
                 <div class="col-sm-12">
                     <ul class="list-inline">
                         <li class="list-inline-item"><span class="badge badge-pill badge-secondary">Total Victory</span></li>
@@ -34,6 +41,7 @@
                         <li class="list-inline-item"><span class="badge badge-pill badge-secondary">Qualifying</span></li>
                     </ul>
                 </div>
+                -->
             </div>
         </div>
         <ul id="tabs" class="nav nav-tabs">

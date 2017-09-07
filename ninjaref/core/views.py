@@ -26,6 +26,7 @@ def leaderboard(request):
 
 def profile(request, sender, target):
     ninja = Ninja.objects.get(ninja_id=target)
+    print(ninja.occupation)
     summary = CareerSummary.objects.get(ninja_id=target)
 
     profile = [

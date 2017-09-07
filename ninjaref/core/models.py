@@ -9,6 +9,9 @@ class Ninja(models.Model):
     last_name = models.TextField()
     sex = models.CharField(max_length=1)
     age = models.IntegerField(blank=True, null=True)
+    occupation = models.TextField()
+    instagram = models.TextField()
+    twitter = models.TextField()
 
     def __unicode__(self):
         return '{0} {1}'.format(self.first_name, self.last_name)
