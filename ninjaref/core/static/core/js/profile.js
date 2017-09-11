@@ -1,10 +1,10 @@
 var trendCtx = document.getElementById('trend').getContext('2d')
 var trendData = {
-  labels: [4, 5, 6, 7, 8],
+  labels: [7],
   datasets: [
     {
       backgroundColor: 'rgba(139,195,74,0.4)',
-      data: [1, 2, 3, 2, 4]
+      data: [1]
     }
   ]
 }

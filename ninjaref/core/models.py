@@ -52,8 +52,7 @@ class ObstacleResult(models.Model):
     completed = models.BooleanField()
     obstacle = models.ForeignKey(
         Obstacle, models.DO_NOTHING, blank=True, null=True)
-    ninja = models.ForeignKey(
-        Ninja, models.DO_NOTHING, blank=True, null=True)
+    ninja = models.ForeignKey(Ninja, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -68,8 +67,7 @@ class CourseResult(models.Model):
     completed = models.BooleanField()
     course = models.ForeignKey(
         Course, models.DO_NOTHING, blank=True, null=True)
-    ninja = models.ForeignKey(
-        Ninja, models.DO_NOTHING, blank=True, null=True)
+    ninja = models.ForeignKey(Ninja, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -86,8 +84,7 @@ class CareerSummary(models.Model):
     qualifying = models.IntegerField()
     finals = models.IntegerField()
     stages = models.IntegerField()
-    ninja = models.ForeignKey(
-        Ninja, models.DO_NOTHING, blank=True, null=True)
+    ninja = models.ForeignKey(Ninja, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
