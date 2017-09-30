@@ -27,6 +27,22 @@ def leaderboard(request):
         })
 
 
+AVERAGE_NR = []
+AVERAGE_SPEED = []
+AVERAGE_CONSISTENCY = []
+AVERAGE_SUCCESS = []
+for s in CareerSummary.objects.all():
+    AVERAGE_NR.append(s.speed + s.consistency + s.success)
+    AVERAGE_SPEED.append(s.speed)
+    AVERAGE_CONSISTENCY.append(s.consistency)
+    AVERAGE_SUCCESS.append(s.success)
+
+AVERAGE_NR = [
+    s.speed + s.consistency + s.success for s in CareerSummary.objects.all()
+]
+AVERAGE_NR = sum(AVERAGE_NR) / float(len(AVERAGE_NR))
+
+
 def profile(request, sender, target):
     ninja = Ninja.objects.get(ninja_id=target)
     summary = CareerSummary.objects.get(ninja_id=target)
@@ -42,5 +58,6 @@ def profile(request, sender, target):
         'name': '{0} {1}'.format(ninja.first_name, ninja.last_name),
         'summary': summary,
         'profileNRData': profile,
+        'overallNRData': profile,
         'page': 'profile',
     })

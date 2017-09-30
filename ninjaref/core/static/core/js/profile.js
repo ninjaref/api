@@ -52,3 +52,48 @@ var trendChart = new Chart(trendCtx, {
     }
   }
 })
+
+/* Ninja Rating Chart */
+
+var ratingDataOverall = {
+  labels: ['Speed', 'Consistency', 'Success', 'Rating'],
+  datasets: [
+    {
+      label: 'Average',
+      backgroundColor: '#D6E685',
+      hoverBackgroundColor: '#D6E685',
+      borderColor: '#D6E685',
+      data: rDataProfile
+    },
+    {
+      label: 'Profile',
+      backgroundColor: '#8CC665',
+      hoverBackgroundColor: '#8CC665',
+      borderColor: '#8CC665',
+      data: rDataProfile
+    }
+  ]
+}
+
+var ratingDataFilter = {
+  labels: ['Speed', 'Consistency', 'Success', 'Rating'],
+  datasets: [
+    {
+      label: 'Average',
+      backgroundColor: 'rgba(205, 220, 57, 0.85)',
+      data: rDataProfile
+    },
+    {
+      label: 'Profile',
+      backgroundColor: 'rgba(66, 133, 234, .2)',
+      data: rDataProfile
+    }
+  ]
+}
+
+var ratingCtx = document.getElementById('ninja-rating').getContext('2d')
+var ratingChart = new Chart(ratingCtx, {
+  type: 'bar',
+  data: ratingDataOverall,
+  options: {}
+})
