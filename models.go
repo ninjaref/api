@@ -2,14 +2,18 @@ package api
 
 // Ninja represents an individual ANW competitor.
 type Ninja struct {
-	ID         uint   `gorm:"column:ninja_id;primary_key"`
-	FirstName  string `gorm:"not null"`
-	LastName   string `gorm:"not null"`
-	Sex        string `gorm:"not null"`
+	ID        uint   `gorm:"column:ninja_id;primary_key"`
+	FirstName string `gorm:"not null"`
+	LastName  string `gorm:"not null"`
+	Sex       string `gorm:"not null"`
+
+	// `Age` and `Occupation` may be NULL since we don't always know them.
 	Age        NullableInt
 	Occupation NullableString
-	Instagram  NullableString
-	Twitter    NullableString
+
+	// Social media may be NULL since some competitors don't have them.
+	Instagram NullableString
+	Twitter   NullableString
 }
 
 // CareerSummary provides a high-level view of a competitor's career, including

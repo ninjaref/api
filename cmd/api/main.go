@@ -49,18 +49,15 @@ func main() {
 	{
 		controller := api.NewDBController(db)
 
-		// Ninja endpoint
+		// Ninja endpoint:
 		v1.GET("/ninjas", controller.Ninjas)
 		v1.GET("/ninja/:id", controller.Ninja)
-		/*
-			v1.GET("/article/:id", article.One)
-			v1.PUT("/article/:id", article.Update)
-			v1.DELETE("/article/:id", article.Delete)
-		*/
+
+		// Leaderboard endpoint:
+		// v1.GET("/leaderboard/:division", controller.Leaderboard)
 	}
 
-	r.LoadHTMLGlob("./views/html/*")
-
+	r.LoadHTMLGlob("./views/*.html")
 	r.Static("/views", "./views")
 
 	r.GET("/", func(c *gin.Context) {
