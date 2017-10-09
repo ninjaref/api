@@ -5,11 +5,9 @@ import (
 	"net/http"
 	"runtime"
 
-	"github.com/ninjaref/api/controllers"
-	"github.com/ninjaref/api/db"
-
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/ninjaref/api"
 )
 
 //CORSMiddleware ...
@@ -39,7 +37,7 @@ func main() {
 
 	r.Use(CORSMiddleware())
 
-	db, err := db.NewDatabase()
+	db, err := api.NewDatabase()
 	if err != nil {
 		panic(err)
 	}
@@ -47,7 +45,7 @@ func main() {
 	v1 := r.Group("/v1")
 	{
 		// Ninja endpoint
-		ninja := controllers.NewNinjaController(db)
+		ninja := api.NewNinjaController(db)
 
 		v1.GET("/ninjas", ninja.All)
 		/*

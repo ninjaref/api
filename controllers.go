@@ -1,24 +1,22 @@
-package controllers
+package api
 
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-gorp/gorp"
-
-	"github.com/ninjaref/api/models"
 )
 
 // NinjaController ...
 type NinjaController struct {
-	model *models.Ninja
+	model *Ninja
 	db    *gorp.DbMap
 }
 
 // NewNinjaController ...
 func NewNinjaController(db *gorp.DbMap) *NinjaController {
-	return &NinjaController{model: new(models.Ninja), db: db}
+	return &NinjaController{model: new(Ninja), db: db}
 }
 
-// All ...
+// All returns all competitors in the database.
 func (ninja *NinjaController) All(c *gin.Context) {
 	data, err := ninja.model.All(ninja.db)
 	if err != nil {
