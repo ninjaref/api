@@ -59,7 +59,7 @@ func (dbc *DBController) Leaderboard(c *gin.Context) {
 		query = query.Joins(join).Where("ninja.sex = ?", "F")
 	}
 
-	if err := query.Debug().Find(&summaries).Error; err != nil {
+	if err := query.Find(&summaries).Error; err != nil {
 		c.JSON(406, gin.H{"error": err})
 		c.Abort()
 		return
