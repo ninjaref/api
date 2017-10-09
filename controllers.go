@@ -42,17 +42,24 @@ func (dbc *DBController) Ninja(c *gin.Context) {
 }
 
 // Leaderboard returns the top-15 competitors by Ninja Rating.
-//
-// TODO: implement separate divisions for men, women, and overall.
 func (dbc *DBController) Leaderboard(c *gin.Context) {
 	summaries := []CareerSummary{}
 
-	// Select the top-15 competitors ordered by to Ninja Rating:
+	// Select the top-15 competitors ordered by Ninja Rating:
 	sel := "*, speed + consistency + success AS rating"
 	ord := "rating desc"
 	query := dbc.db.Preload("Ninja").Limit(15).Select(sel).Order(ord)
 
-	if err := query.Find(&summaries).Error; err != nil {
+	// Sort by men or women, if we're given a division:
+	div := c.Param("division")
+	join := "JOIN ninja on ninja.ninja_id = careersummary.ninja_id"
+	if div == "men" {
+		query = query.Joins(join).Where("ninja.sex = ?", "M")
+	} else if div == "women" {
+		query = query.Joins(join).Where("ninja.sex = ?", "F")
+	}
+
+	if err := query.Debug().Find(&summaries).Error; err != nil {
 		c.JSON(406, gin.H{"error": err})
 		c.Abort()
 		return
