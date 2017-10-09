@@ -2,18 +2,6 @@
 
 
 [[projects]]
-  name = "github.com/Massad/gin-boilerplate"
-  packages = ["controllers","db","forms","models"]
-  revision = "9e789fc0b23c5171f794411c34f64b74978e87b7"
-  version = "v0.03"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/bmizerany/assert"
-  packages = ["."]
-  revision = "b7ed37b82869576c289d7d97fb2bbd8b64a0cb28"
-
-[[projects]]
   name = "github.com/boj/redistore"
   packages = ["."]
   revision = "fc113767cd6b051980f260d6dbe84b2740c46ab0"
@@ -44,12 +32,6 @@
   version = "v1.2"
 
 [[projects]]
-  name = "github.com/go-gorp/gorp"
-  packages = ["."]
-  revision = "4deece61034873cb5b5416e81abe4cea7bd0da72"
-  version = "v2.0.0"
-
-[[projects]]
   branch = "master"
   name = "github.com/golang/protobuf"
   packages = ["proto"]
@@ -74,16 +56,16 @@
   version = "v1.1"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/kr/pretty"
+  name = "github.com/jinzhu/gorm"
   packages = ["."]
-  revision = "cfb55aafdaf3ec08f0db22699ab822c50091b1c4"
+  revision = "5174cc5c242a728b435ea2be8a2f7f998e15429b"
+  version = "v1.0"
 
 [[projects]]
   branch = "master"
-  name = "github.com/kr/text"
+  name = "github.com/jinzhu/inflection"
   packages = ["."]
-  revision = "7cafcd837844e784b526369c9bce262804aebc60"
+  revision = "1c35d901db3da928c72a72d8458480cc9ade058f"
 
 [[projects]]
   branch = "master"
@@ -105,15 +87,9 @@
 
 [[projects]]
   branch = "master"
-  name = "golang.org/x/crypto"
-  packages = ["bcrypt","blowfish"]
-  revision = "9419663f5a44be8b34ca85f08abc5fe1be11f8a3"
-
-[[projects]]
-  branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "314a259e304ff91bd6985da2a7149bbf91237993"
+  revision = "ebfc5b4631820b793c9010c87fd8fef0f39eb082"
 
 [[projects]]
   name = "gopkg.in/go-playground/validator.v8"
@@ -130,6 +106,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "0bfe713d6a50bdc0b1a902770c92b49d217f94b5fedc7f27fa2e8d4deaa218fb"
+  inputs-digest = "b2eb132c5463969a585d4c8e943bdc13c3cdbf9fc130dedd91c42228d7e760a4"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -10,7 +10,7 @@ import (
 	"github.com/ninjaref/api"
 )
 
-//CORSMiddleware ...
+// CORSMiddleware ...
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost")
@@ -31,23 +31,27 @@ func CORSMiddleware() gin.HandlerFunc {
 
 func main() {
 	r := gin.Default()
-
 	store, _ := sessions.NewRedisStore(10, "tcp", "localhost:6379", "", []byte("secret"))
-	r.Use(sessions.Sessions("ninjaref-session", store))
 
+	r.Use(sessions.Sessions("ninjaref-session", store))
 	r.Use(CORSMiddleware())
 
 	db, err := api.NewDatabase()
 	if err != nil {
 		panic(err)
 	}
+	defer db.Close()
+
+	db.SingularTable(true)
+	db.AutoMigrate(&api.Ninja{}, &api.CareerSummary{})
 
 	v1 := r.Group("/v1")
 	{
-		// Ninja endpoint
-		ninja := api.NewNinjaController(db)
+		controller := api.NewDBController(db)
 
-		v1.GET("/ninjas", ninja.All)
+		// Ninja endpoint
+		v1.GET("/ninjas", controller.Ninjas)
+		v1.GET("/ninja/:id", controller.Ninja)
 		/*
 			v1.GET("/article/:id", article.One)
 			v1.PUT("/article/:id", article.Update)
@@ -55,9 +59,9 @@ func main() {
 		*/
 	}
 
-	r.LoadHTMLGlob("./public/html/*")
+	r.LoadHTMLGlob("./views/html/*")
 
-	r.Static("/public", "./public")
+	r.Static("/views", "./views")
 
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{

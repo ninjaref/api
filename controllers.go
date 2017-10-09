@@ -2,54 +2,41 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/go-gorp/gorp"
+	"github.com/jinzhu/gorm"
 )
 
-// NinjaController ...
-type NinjaController struct {
-	model *Ninja
-	db    *gorp.DbMap
+// DBController manages access to our database.
+type DBController struct {
+	db *gorm.DB
 }
 
-// NewNinjaController ...
-func NewNinjaController(db *gorp.DbMap) *NinjaController {
-	return &NinjaController{model: new(Ninja), db: db}
+// NewDBController creates a controller associated with the given `gorm.DB`.
+func NewDBController(db *gorm.DB) *DBController {
+	return &DBController{db: db}
 }
 
-// All returns all competitors in the database.
-func (ninja *NinjaController) All(c *gin.Context) {
-	data, err := ninja.model.All(ninja.db)
-	if err != nil {
-		c.JSON(406, gin.H{"Message": "No results.", "error": err.Error()})
-		c.Abort()
-		return
-	}
-	c.JSON(200, gin.H{"data": data})
-}
+// Ninjas returns all competitors in the database.
+func (dbc *DBController) Ninjas(c *gin.Context) {
+	ninjas := []Ninja{}
 
-/*
-//One ...
-func (ctrl ArticleController) One(c *gin.Context) {
-	userID := getUserID(c)
-
-	if userID == 0 {
-		c.JSON(403, gin.H{"message": "Please login first"})
+	if err := dbc.db.Find(&ninjas).Error; err != nil {
+		c.JSON(406, gin.H{"error": err})
 		c.Abort()
 		return
 	}
 
-	id := c.Param("id")
+	c.JSON(200, gin.H{"data": ninjas})
+}
 
-	if id, err := strconv.ParseInt(id, 10, 64); err == nil {
+// Ninja returns the competitor with the given ID.
+func (dbc *DBController) Ninja(c *gin.Context) {
+	ninja := Ninja{}
 
-		data, err := articleModel.One(userID, id)
-		if err != nil {
-			c.JSON(404, gin.H{"Message": "Article not found", "error": err.Error()})
-			c.Abort()
-			return
-		}
-		c.JSON(200, gin.H{"data": data})
-	} else {
-		c.JSON(404, gin.H{"Message": "Invalid parameter"})
+	if err := dbc.db.Find(&ninja, c.Param("id")).Error; err != nil {
+		c.JSON(406, gin.H{"error": err})
+		c.Abort()
+		return
 	}
-}*/
+
+	c.JSON(200, gin.H{"data": ninja})
+}
