@@ -54,7 +54,7 @@ func main() {
 		v1.GET("/ninja/:id", controller.Ninja)
 
 		// Leaderboard endpoint:
-		// v1.GET("/leaderboard/:division", controller.Leaderboard)
+		v1.GET("/leaderboard", controller.Leaderboard)
 	}
 
 	r.LoadHTMLGlob("./views/*.html")

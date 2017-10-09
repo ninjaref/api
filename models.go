@@ -21,13 +21,24 @@ type Ninja struct {
 // stages), the number of seasons competed, their best finish, and their Ninja
 // Rating.
 type CareerSummary struct {
-	ID          uint    `gorm:"column:summary_id;primary_key"`
-	BestFinish  string  `gorm:"not null"`
-	Speed       float64 `gorm:"not null"`
-	Success     float64 `gorm:"not null"`
-	Consistency float64 `gorm:"not null"`
-	Seasons     int64   `gorm:"not null"`
-	Qualifying  int64   `gorm:"not null"`
-	Finals      int64   `gorm:"not null"`
-	Stages      int64   `gorm:"not null"`
+	ID          uint `gorm:"column:summary_id;primary_key"`
+	BestFinish  string
+	Speed       float64
+	Success     float64
+	Consistency float64
+	Seasons     int64
+	Qualifying  int64
+	Finals      int64
+	Stages      int64
+	NinjaID     uint
+	Ninja       Ninja
+}
+
+// TableName returns the name used in our database.
+//
+// By default, Gorm converts `TableName` to `table_name`.
+//
+// TODO: Update our database to use `table_name` and remove.
+func (CareerSummary) TableName() string {
+	return "careersummary"
 }

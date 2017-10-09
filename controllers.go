@@ -41,18 +41,22 @@ func (dbc *DBController) Ninja(c *gin.Context) {
 	c.JSON(200, gin.H{"data": ninja})
 }
 
-/*
 // Leaderboard returns the top-15 competitors by Ninja Rating.
+//
+// TODO: implement separate divisions for men, women, and overall.
 func (dbc *DBController) Leaderboard(c *gin.Context) {
-	ninjas := []Ninja{}
-	div := c.Param("division")
+	summaries := []CareerSummary{}
 
-	if err := dbc.db.Find(&ninjas).Error; err != nil {
+	// Select the top-15 competitors ordered by to Ninja Rating:
+	sel := "*, speed + consistency + success AS rating"
+	ord := "rating desc"
+	query := dbc.db.Preload("Ninja").Limit(15).Select(sel).Order(ord)
+
+	if err := query.Find(&summaries).Error; err != nil {
 		c.JSON(406, gin.H{"error": err})
 		c.Abort()
 		return
 	}
 
-	c.JSON(200, gin.H{"data": ninjas})
+	c.JSON(200, gin.H{"data": summaries})
 }
-*/
