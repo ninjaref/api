@@ -46,9 +46,7 @@ func (dbc *DBController) Leaderboard(c *gin.Context) {
 	summaries := []CareerSummary{}
 
 	// Select the top-15 competitors ordered by Ninja Rating:
-	sel := "*, speed + consistency + success AS rating"
-	ord := "rating desc"
-	query := dbc.db.Preload("Ninja").Limit(15).Select(sel).Order(ord)
+	query := dbc.db.Preload("Ninja").Limit(15).Select("*").Order("rating desc")
 
 	// Sort by men or women, if we're given a division:
 	div := c.Param("division")

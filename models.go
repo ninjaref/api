@@ -26,6 +26,7 @@ type CareerSummary struct {
 	Speed       float64
 	Success     float64
 	Consistency float64
+	Rating      float64
 	Seasons     int64
 	Qualifying  int64
 	Finals      int64
