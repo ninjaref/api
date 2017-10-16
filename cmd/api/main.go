@@ -51,7 +51,7 @@ func main() {
 
 		// Ninja endpoint:
 		v1.GET("/ninjas", controller.Ninjas)
-		v1.GET("/ninja/:id", controller.Ninja)
+		v1.GET("/ninjas/:id", controller.Ninja)
 
 		// Leaderboard endpoint:
 		v1.GET("/leaderboard/:division", controller.Leaderboard)
